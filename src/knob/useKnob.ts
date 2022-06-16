@@ -80,9 +80,9 @@ export function useKnob(props: UseKnobProps) {
     "aria-label": ariaLabel,
     "aria-labelledby": ariaLabelledBy,
     name,
-    ...htmlProps
+    ...restProps
   } = props;
-  const { middleMarker = min } = props;
+  const { middleMarker = min, ...htmlProps } = restProps;
   const middleMarkerPercent = valueToPercent(middleMarker, min, max);
 
   const resolvedSize = clampValue(Number(size), 10, 1000);
