@@ -15,14 +15,44 @@ export const Demo: React.FC = () => {
   return (
     <VStack>
       <Box>Value: {value}</Box>
-      
-      <Slider onChange={(val) => setValue(val)} value={value}  min={-80} max={80} focusThumbOnChange={false}>
+
+      <Slider
+        onChange={(val) => setValue(val)}
+        value={value}
+        min={-80}
+        max={80}
+        focusThumbOnChange={false}
+      >
         <SliderTrack>
           <SliderFilledTrack />
         </SliderTrack>
         <SliderThumb />
       </Slider>
-      <Knob middleMarker={0} onChange={(val) => setValue(val)} value={value} min={-80} max={80}/>
+      <Knob
+        middleMarker={0}
+        onChange={(val) => setValue(val)}
+        value={value}
+        min={-80}
+        max={80}
+      />
+      <Knob
+        middleMarker={0}
+        onChange={(val) => setValue(val)}
+        value={value}
+        min={-80}
+        max={80}
+        size={100}
+      />
+      <Knob
+        middleMarker={0}
+        onChange={(val) => setValue(val)}
+        value={value}
+        min={-80}
+        max={80}
+        size={200}
+        innerTrackColor="blue"
+        innerTrackWidth={5}
+      />
     </VStack>
   );
 };
