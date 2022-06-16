@@ -2,20 +2,15 @@ import {
   useBoolean,
   useCallbackRef,
   useControllableState,
-  useDimensions,
-  useIds,
   useLatestRef,
   usePanGesture,
   useUpdateEffect,
 } from "@chakra-ui/hooks";
-import { useToken } from "@chakra-ui/react";
 
 import {
   EventKeyMap,
   mergeRefs,
   PropGetter,
-  PropGetterV2,
-  ReactRef,
 } from "@chakra-ui/react-utils";
 import {
   PanEventInfo,
@@ -25,14 +20,13 @@ import {
   clampValue,
   dataAttr,
   focus,
-  getBox,
   normalizeEventKey,
   percentToValue,
   roundValueToStep,
   valueToPercent,
 } from "@chakra-ui/utils";
 
-import { CSSProperties, useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 
 export interface UseKnobProps {
   size?: string | number;

@@ -1,13 +1,8 @@
 import { createContext } from "@chakra-ui/react-utils";
 import {
   chakra,
-  createStylesContext,
   forwardRef,
   HTMLChakraProps,
-  omitThemingProps,
-  ThemingProps,
-  useMultiStyleConfig,
-  useTheme,
 } from "@chakra-ui/system";
 import { cx, __DEV__ } from "@chakra-ui/utils";
 import * as React from "react";
@@ -30,7 +25,6 @@ const [KnobProvider, useKnobContext] = createContext<KnobContext>({
     "useKnobContext: `context` is undefined. Seems you forgot to wrap all knob components within <Knob />",
 });
 
-const [StylesProvider, useStyles] = createStylesContext("Knob");
 
 export { KnobProvider, useKnobContext };
 
@@ -46,8 +40,6 @@ export interface KnobProps
 // 300 degrees in total
 
 export const Knob = forwardRef<KnobProps, "div">((props, ref) => {
-  const styles = useMultiStyleConfig("Knob", props);
-  const ownProps = omitThemingProps(props);
   const {
     getInputProps,
     getRootProps,
@@ -66,20 +58,17 @@ export const Knob = forwardRef<KnobProps, "div">((props, ref) => {
 
   return (
     <KnobProvider value={context}>
-      <StylesProvider value={styles}>
-        <chakra.div
-          {...rootProps}
-          className={cx("chakra-knob", props.className)}
-          __css={styles.container}
-        >
-          <svg {...svgProps}>
-            <circle {...trackProps} />
-            <circle {...innerTrackProps} />
-            <line {...indicatorProps} />
-          </svg>
-          <input {...inputProps} />
-        </chakra.div>
-      </StylesProvider>
+      <chakra.div
+        {...rootProps}
+        className={cx("chakra-knob", props.className)}
+      >
+        <svg {...svgProps}>
+          <circle {...trackProps} />
+          <circle {...innerTrackProps} />
+          <line {...indicatorProps} />
+        </svg>
+        <input {...inputProps} />
+      </chakra.div>
     </KnobProvider>
   );
 });
